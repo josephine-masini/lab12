@@ -3,6 +3,15 @@
 Joséphine MASINI
 
 ---
+1. On clone les sources du bootloader u-boot : `git clone https://github.com/u-boot/u-boot.git` dans le lab12.
+
+2. On se place dans la branche v2018.05, pour avoir une version spécifique, on fait `cd u-boot` et ensuite `git checkout v2018.05` pour changer de branche. 
+
+3. Pour vérifier qu'on est bien sur la bonne branche : `git branch`, on a alors le résultat suivant : `*(HEAD detached v2018.05)`, on est bien sur la bonne branche. 
+
+4. On va dans u-boot/configs : `cd u-boot/configs`, on fait ensuite un `ls * | grep black` et on trouve le fichier de config associé à la carte : `am335x-boneblack-defconfig`. 
+
+5. On lance `make defconfig_file`, on vérifie la présence du fichier .config dans `ls -a` pour 
 
 6. On a bien : 
 
