@@ -9,9 +9,11 @@ Joséphine MASINI
 
 3. Pour vérifier qu'on est bien sur la bonne branche : `git branch`, on a alors le résultat suivant : `*(HEAD detached v2018.05)`, on est bien sur la bonne branche. 
 
-4. On va dans u-boot/configs : `cd u-boot/configs`, on fait ensuite un `ls * | grep black` et on trouve le fichier de config associé à la carte : `am335x-boneblack-defconfig`. 
+4. On va dans u-boot/configs : `cd u-boot/configs`, on fait ensuite un `ls * | grep "black"` et on trouve le fichier de config associé à la carte : `am335x-boneblack-defconfig`. 
 
-5. On lance `make defconfig_file`, on vérifie la présence du fichier .config dans `ls -a` pour 
+5. On lance `make defconfig_file`, on vérifie la présence du fichier .config dans `ls -a` pour voir les fichiers cachés, on l'ouvre ensuite sur vim : `vim .config`. 
+On modifie la variable CONFIG_SYS_PROMPT : `CONFIG_SYS_PROMPT="masini-uboot"`. Ce fichier contient toutes les variables d'environnement de u-boot, que l'on peut configurer.
+On fait un `make am335x-boneblack-defconfig` dans u-boot. 
 
 6. On a bien : 
 
@@ -50,7 +52,7 @@ Device     Boot Start     End Sectors  Size Id Type
 ```
 Pour les questions qui suivent la carte a déjà été utilisée et configurée, on passe donc directement à la question 13.
 
-13. On fait ` sudo mkfs.vfat -F32/dev/sdc1 -n boot`
+13. On fait ` sudo mkfs.vfat -F32/dev/sdc1 -n boot` dans dev pour convertir au format fat32, on a :
 ```
 student@ubuntu:/dev$ sudo mkfs.vfat -F 32 /dev/sdc1 -n boot
 mkfs.fat 4.1 (2017-01-24)
@@ -68,4 +70,4 @@ mkfs.fat: warning - lowercase labels might not work properly with DOS or Windows
 cp MLO u-boot.img /media/student/boot 
 
 ```
-On vérifie ensuite qu'on l'a bien dessus.
+On vérifie ensuite qu'on l'a bien dessus. C'est le cas, nous pouvons passer au lab suivant. 
